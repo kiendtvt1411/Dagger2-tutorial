@@ -9,6 +9,7 @@ import com.mindorks.example.android_dagger2_example.data.DbHelper;
 import com.mindorks.example.android_dagger2_example.data.SharedPrefsHelper;
 import com.mindorks.example.android_dagger2_example.di.ApplicationContext;
 import com.mindorks.example.android_dagger2_example.di.module.ApplicationModule;
+import com.mindorks.example.android_dagger2_example.sample.DependencySample1;
 
 import javax.inject.Singleton;
 
@@ -35,5 +36,7 @@ public interface ApplicationComponent {
     SharedPrefsHelper getPreferenceHelper();
 
     DbHelper getDbHelper();
+
+    DependencySample1 getDependencySample1();
 
 }

@@ -3,10 +3,14 @@ package com.mindorks.example.android_dagger2_example.di.module;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.mindorks.example.android_dagger2_example.di.ApplicationContext;
 import com.mindorks.example.android_dagger2_example.di.DatabaseInfo;
+import com.mindorks.example.android_dagger2_example.sample.DependencySample1;
+
+import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,6 +22,7 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
+    private static final String TAG = "ApplicationModule";
     private final Application mApplication;
 
     public ApplicationModule(Application app) {
@@ -50,5 +55,19 @@ public class ApplicationModule {
     @Provides
     SharedPreferences provideSharedPrefs() {
         return mApplication.getSharedPreferences("demo-prefs", Context.MODE_PRIVATE);
+    }
+
+    @Provides
+    @Singleton
+    DependencySample1 provideDependencySample1() {
+        Log.d(TAG, "provideDependencySample1: provideDependencySample1 called");
+        return new DependencySample1(3);
+    }
+
+    @Provides
+    @Named(value = "DependencySample1_Integer")
+    Integer provideDependencySample1Integer() {
+        Log.d(TAG, "provideDependencySample1: provideDependencySample1Integer called");
+        return 3;
     }
 }

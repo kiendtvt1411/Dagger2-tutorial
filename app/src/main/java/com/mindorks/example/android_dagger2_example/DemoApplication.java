@@ -7,6 +7,7 @@ import com.mindorks.example.android_dagger2_example.data.DataManager;
 import com.mindorks.example.android_dagger2_example.di.component.ApplicationComponent;
 import com.mindorks.example.android_dagger2_example.di.component.DaggerApplicationComponent;
 import com.mindorks.example.android_dagger2_example.di.module.ApplicationModule;
+import com.mindorks.example.android_dagger2_example.sample.DependencySample1;
 
 import javax.inject.Inject;
 
@@ -17,7 +18,10 @@ import javax.inject.Inject;
 public class DemoApplication extends Application {
 
     protected ApplicationComponent applicationComponent;
+    private DependencySample1 dependencySample1;
 
+    @Inject
+    DependencySample1 dependencySample1Instance1;
     @Inject
     DataManager dataManager;
 
@@ -33,6 +37,7 @@ public class DemoApplication extends Application {
                                     .applicationModule(new ApplicationModule(this))
                                     .build();
         applicationComponent.inject(this);
+        dependencySample1 = applicationComponent.getDependencySample1();
     }
 
     public ApplicationComponent getComponent(){

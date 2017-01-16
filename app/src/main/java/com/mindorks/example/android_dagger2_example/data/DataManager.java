@@ -5,6 +5,7 @@ import android.content.res.Resources;
 
 import com.mindorks.example.android_dagger2_example.data.model.User;
 import com.mindorks.example.android_dagger2_example.di.ApplicationContext;
+import com.mindorks.example.android_dagger2_example.sample.DependencySample1;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -23,7 +24,8 @@ public class DataManager {
     @Inject
     public DataManager(@ApplicationContext Context context,
                        DbHelper dbHelper,
-                       SharedPrefsHelper sharedPrefsHelper) {
+                       SharedPrefsHelper sharedPrefsHelper,
+                       DependencySample1 dependencySample1Instance) {
         mContext = context;
         mDbHelper = dbHelper;
         mSharedPrefsHelper = sharedPrefsHelper;

@@ -11,6 +11,7 @@ import com.mindorks.example.android_dagger2_example.data.model.User;
 import com.mindorks.example.android_dagger2_example.di.component.ActivityComponent;
 import com.mindorks.example.android_dagger2_example.di.component.DaggerActivityComponent;
 import com.mindorks.example.android_dagger2_example.di.module.ActivityModule;
+import com.mindorks.example.android_dagger2_example.sample.DependencySample1;
 
 import javax.inject.Inject;
 
@@ -18,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Inject
     DataManager mDataManager;
+    @Inject
+    DependencySample1 dependencySample1;
+    @Inject
+    DependencySample1 dependencySample2;
 
     private ActivityComponent activityComponent;
 
